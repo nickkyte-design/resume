@@ -14,26 +14,38 @@ export const resumeData: ResumeData = {
   contact: {
     email: "nicholaskyte@proton.me",
     phone: "(925) 708-2585",
+    showPhoneOnSite: false,
     linkedin: "https://www.linkedin.com/in/nicholaskyte",
     github: "https://github.com/nickkyte-design",
     location: "Martinez, CA",
   },
   experience: [
     {
-      id: "exp-meta",
-      title: "Network Engineer",
+      id: "exp-meta-dc",
+      title: "Network Engineer, DC Deployment",
       company: "Meta (Tenarai)",
-      startDate: "10/2022",
+      startDate: "08/2025",
       endDate: "Present",
       summary:
-        "Driving deployment, testing, and migration of production networks powering Meta's global applications and GenAI superclusters. Roles include DC Deployment and Peering Circuit Provisioning on the Edge and Network Services team.",
+        "Driving the deployment, testing, and migration of the production networks that power Meta's global applications and massive GenAI superclusters. The execution arm of the Edge and Network Services Team.",
       highlights: [
         "Writing and executing training programs for the ENS-DC-DS team which halved onboarding time for new hires from 4 months to 2.",
         "Composed and managed a centralized network infrastructure knowledge base for a 24x7x365 deployment team, standardizing engineering workflows and drastically reducing project delivery errors.",
-        "Designed and coded Python dashboards and operational workflows that expanded Zero Touch Provisioning (ZTP) automation for hyperscale AI network devices.",
-        "Manage a 14-member engineering team responsible for end-to-end provisioning, rack turn-ups, and circuit audits of hyperscale AI NSF fabrics.",
-        "Pilot Provisioner on TPR optical devices for GenAI and Oracle Cloud Infrastructure, ensuring timely delivery of high-priority circuits with P0 service providers.",
-        "Led capacity-add projects at Meta's Edge POPs; CIP rollouts of peering_activate_interface and peering_bgp_peer_removal automation saved 8–10 engineer hours per week.",
+        "Designed and coded Python dashboards and operational workflows that expanded Zero Touch Provisioning (ZTP) automation for hyperscale AI network devices, significantly accelerating deployment dates and reducing communication delays.",
+        "Manage a 14-member engineering team responsible for the end-to-end provisioning, rack turn-ups, and circuit audits of hyperscale AI NSF fabrics.",
+      ],
+    },
+    {
+      id: "exp-meta-peering",
+      title: "Network Engineer, Peering — Circuit Provisioning",
+      company: "Meta (Tenarai)",
+      startDate: "10/2022",
+      endDate: "07/2025",
+      summary: "End-to-end turn-up of BGP peering links to service providers.",
+      highlights: [
+        "Pilot Provisioner on TPR optical devices for GenAI and Oracle Cloud Infrastructure, ensuring timely delivery of high-priority circuits/cross-connects with P0 service providers.",
+        "Led capacity-add projects from start to finish at Meta's Edge POPs. Skills in colocation, BOMs, SOWs, and RFEs.",
+        "CIP rollouts of automation workflows such as peering_activate_interface and peering_bgp_peer_removal, significantly reducing manual CLI work and saving 8–10 hours per week of engineer time on peering circuit provisioning.",
       ],
     },
     {

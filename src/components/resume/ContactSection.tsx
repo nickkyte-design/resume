@@ -62,7 +62,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           value={contact.email}
           icon={<Mail className="h-5 w-5" />}
         />
-        {contact.phone && (
+        {contact.phone && contact.showPhoneOnSite && (
           <ContactLink
             href={`tel:${contact.phone.replace(/\D/g, "")}`}
             label="Phone"

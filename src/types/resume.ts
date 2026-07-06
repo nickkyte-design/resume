@@ -1,6 +1,7 @@
 export interface ContactInfo {
   email: string;
   phone?: string;
+  showPhoneOnSite?: boolean;
   linkedin: string;
   github: string;
   location?: string;
