@@ -31,6 +31,12 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
         </time>
       </div>
 
+      {experience.summary && (
+        <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          {experience.summary}
+        </p>
+      )}
+
       <ul className="mt-5 space-y-2">
         {experience.highlights.map((highlight) => (
           <li

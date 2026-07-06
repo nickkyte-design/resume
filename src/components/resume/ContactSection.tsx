@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import type { ReactNode } from "react";
 import type { ContactInfo } from "@/types/resume";
@@ -62,6 +62,14 @@ export function ContactSection({ contact }: ContactSectionProps) {
           value={contact.email}
           icon={<Mail className="h-5 w-5" />}
         />
+        {contact.phone && (
+          <ContactLink
+            href={`tel:${contact.phone.replace(/\D/g, "")}`}
+            label="Phone"
+            value={contact.phone}
+            icon={<Phone className="h-5 w-5" />}
+          />
+        )}
         <ContactLink
           href={contact.linkedin}
           label="LinkedIn"
@@ -72,7 +80,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <ContactLink
           href={contact.github}
           label="GitHub"
-          value="github.com/nicholaskyte"
+          value="github.com/nickkyte-design"
           icon={<GitHubIcon className="h-5 w-5" />}
           external
         />
