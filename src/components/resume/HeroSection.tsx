@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download } from "lucide-react";
-import Link from "next/link";
 import type { ResumeData } from "@/types/resume";
+import { DownloadCvButton } from "./DownloadCvButton";
 
 interface HeroSectionProps {
-  data: Pick<ResumeData, "greeting" | "name" | "title" | "summary" | "cvDownloadPath">;
+  data: Pick<ResumeData, "greeting" | "name" | "title" | "summary" | "cvFilename">;
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
@@ -40,14 +39,7 @@ export function HeroSection({ data }: HeroSectionProps) {
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href={data.cvDownloadPath}
-            download
-            className="inline-flex items-center gap-2 rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950"
-          >
-            <Download className="h-4 w-4" aria-hidden />
-            Download CV
-          </Link>
+          <DownloadCvButton filename={data.cvFilename} />
           <a
             href="#experience"
             className="inline-flex items-center rounded-full border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-950"

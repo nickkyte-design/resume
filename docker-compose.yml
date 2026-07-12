@@ -7,4 +7,5 @@ services:
       - "${PORT:-3000}:3000"
     environment:
       - NODE_ENV=production
+      - CV_DOWNLOAD_PASSWORD=${CV_DOWNLOAD_PASSWORD}
     restart: unless-stopped

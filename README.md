@@ -53,7 +53,24 @@ public/
 
 Edit `src/data/resumeData.ts` — all content is centralized there. Components read from this file automatically.
 
-Replace placeholder email, GitHub username, and experience entries with your real details. Drop an updated PDF into `public/cv/`.
+Replace placeholder email, GitHub username, and experience entries with your real details. Drop an updated PDF into `private/cv/`.
+
+### Password-protected CV download
+
+The resume PDF is **not** in `public/` (so it cannot be accessed directly). Visitors must enter a password to download it.
+
+1. Copy `.env.example` to `.env.local` for local development:
+   ```bash
+   cp .env.example .env.local
+   ```
+2. Set `CV_DOWNLOAD_PASSWORD` to your chosen password in `.env.local`.
+3. On **Vercel**: Project → **Settings** → **Environment Variables** → add:
+   - **Name:** `CV_DOWNLOAD_PASSWORD`
+   - **Value:** your password
+   - **Environments:** Production (and Preview if you want)
+4. **Redeploy** after adding the variable (Vercel → Deployments → Redeploy).
+
+Share the password privately with recruiters or contacts you trust.
 
 ## Build & Deploy
 
@@ -67,14 +84,14 @@ npm start
 
 ### Vercel
 
-Push to GitHub and import the repo in [Vercel](https://vercel.com). No environment variables are required for Phase 1.
+Push to GitHub and import the repo in [Vercel](https://vercel.com). Set `CV_DOWNLOAD_PASSWORD` in Environment Variables (see above).
 
 ### Docker (self-hosted / home server)
 
 ```bash
-# Build and run with Docker Compose
+# Build and run with Docker Compose (set password in .env or shell)
 npm run docker:build
-npm run docker:up
+CV_DOWNLOAD_PASSWORD=your-password npm run docker:up
 
 # Stop containers
 npm run docker:down
