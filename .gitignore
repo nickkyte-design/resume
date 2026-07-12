@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# CV PDF — stored in private Vercel Blob, never committed to git
+private/cv/*.pdf
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

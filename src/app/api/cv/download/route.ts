@@ -1,9 +1,6 @@
 import { createHash, timingSafeEqual } from "crypto";
-import { readFile } from "fs/promises";
-import path from "path";
 import { NextResponse } from "next/server";
-
-const CV_FILENAME = "nicholas-kyte-network-engineer.pdf";
+import { CV_FILENAME, getCvBuffer } from "@/lib/cv-storage";
 
 function verifyPassword(provided: string, expected: string): boolean {
   const providedHash = createHash("sha256").update(provided).digest();
@@ -35,10 +32,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    const filePath = path.join(process.cwd(), "private", "cv", CV_FILENAME);
-    const fileBuffer = await readFile(filePath);
+    const fileBuffer = await getCvBuffer();
 
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(new Uint8Array(fileBuffer), {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="${CV_FILENAME}"`,
