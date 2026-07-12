@@ -10,7 +10,7 @@ export const resumeData: ResumeData = {
   greeting: "Hello, I'm",
   summary:
     '"Bias for Action" Network Engineer with nearly two decades of infrastructure experience, specializing in automating and scaling large-scale IP networks and AI superclusters within hyper-scale data centers. Proven track record of implementing CI/CD and DevOps automations that eliminate hundreds of manual engineering hours. Automation is how we accelerate, but productive XFN team meetings are how we maintain velocity.',
-  cvDownloadPath: "/cv/nicholas-kyte-network-engineer.pdf",
+  cvFilename: "nicholas-kyte-network-engineer.pdf",
   contact: {
     email: "nicholaskyte@proton.me",
     phone: "(925) 708-2585",

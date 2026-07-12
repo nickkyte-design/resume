@@ -46,7 +46,7 @@ export interface ResumeData {
   title: string;
   greeting: string;
   summary: string;
-  cvDownloadPath: string;
+  cvFilename: string;
   contact: ContactInfo;
   experience: ExperienceItem[];
   skills: SkillCategory[];

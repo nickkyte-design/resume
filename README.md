@@ -45,15 +45,62 @@ src/
 │   └── navigation.ts       # Nav link configuration
 └── types/
     └── resume.ts           # TypeScript interfaces
-public/
-└── cv/                     # Downloadable resume PDF
+private/
+└── cv/                     # Local PDF only (gitignored) — use Vercel Blob in production
 ```
 
 ## Updating Your Resume
 
 Edit `src/data/resumeData.ts` — all content is centralized there. Components read from this file automatically.
 
-Replace placeholder email, GitHub username, and experience entries with your real details. Drop an updated PDF into `public/cv/`.
+### Secure CV storage (not on GitHub or public web)
+
+Your resume PDF is **never committed to git** and **never served from a public URL**. It lives in:
+
+| Environment | Where the PDF lives |
+|-------------|----------------------|
+| **Production (Vercel)** | [Vercel Blob](https://vercel.com/docs/vercel-blob/private-storage) **private** store — encrypted, auth-only access |
+| **Local dev** | `private/cv/nicholas-kyte-network-engineer.pdf` on your machine only (gitignored) |
+
+#### One-time setup on Vercel
+
+1. **Create a private Blob store**
+   - Vercel Dashboard → your project → **Storage** → **Create Database/Store** → **Blob** → choose **Private**
+
+2. **Upload your PDF** (from your computer, not from GitHub):
+   ```bash
+   cp .env.example .env.local
+   # Add BLOB_READ_WRITE_TOKEN from Vercel → Storage → your store → .env.local tab
+   # Place your PDF at private/cv/nicholas-kyte-network-engineer.pdf
+   npm run upload-cv
+   ```
+
+3. **Set environment variables** in Vercel → **Settings** → **Environment Variables**:
+
+   | Variable | Value |
+   |----------|-------|
+   | `CV_DOWNLOAD_PASSWORD` | Password you share with recruiters |
+   | `CV_BLOB_PATHNAME` | Printed by upload script (e.g. `cv/nicholas-kyte-network-engineer.pdf`) |
+   | `BLOB_READ_WRITE_TOKEN` | Auto-linked if store is connected to project; otherwise copy from store settings |
+
+4. **Redeploy** production after saving variables.
+
+#### Password-protected download flow
+
+Visitors click **Download CV** → enter password → your API route verifies it → fetches the PDF from private Blob storage → streams the file. No direct link exists.
+
+Share `CV_DOWNLOAD_PASSWORD` privately with recruiters you trust.
+
+#### Local development
+
+```bash
+cp .env.example .env.local
+# Set CV_DOWNLOAD_PASSWORD=your-password
+# Place PDF at private/cv/nicholas-kyte-network-engineer.pdf
+npm run dev
+```
+
+(Omit `CV_BLOB_PATHNAME` locally to read from the gitignored file on disk.)
 
 ## Build & Deploy
 
@@ -67,14 +114,16 @@ npm start
 
 ### Vercel
 
-Push to GitHub and import the repo in [Vercel](https://vercel.com). No environment variables are required for Phase 1.
+Push to GitHub and import the repo in [Vercel](https://vercel.com). Complete the **Secure CV storage** steps above (private Blob + env vars).
 
 ### Docker (self-hosted / home server)
 
+Place the PDF at `private/cv/nicholas-kyte-network-engineer.pdf` on the host before building, or mount it as a volume.
+
 ```bash
-# Build and run with Docker Compose
+# Build and run with Docker Compose (set password in .env or shell)
 npm run docker:build
-npm run docker:up
+CV_DOWNLOAD_PASSWORD=your-password npm run docker:up
 
 # Stop containers
 npm run docker:down
