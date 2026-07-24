@@ -22,13 +22,13 @@ export function HeroSection({ data }: HeroSectionProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="relative max-w-3xl"
       >
+        <p className="text-sm font-medium uppercase tracking-widest text-sky-600 dark:text-sky-400">
+          {data.greeting}
+        </p>
         <h1
           id="hero-heading"
-          className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-50"
+          className="mt-3 text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-50"
         >
-          <span className="font-semibold text-sky-600 dark:text-sky-400">
-            {data.greeting}
-          </span>{" "}
           {data.name}
         </h1>
         <p className="mt-3 text-xl font-medium text-zinc-700 sm:text-2xl dark:text-zinc-300">

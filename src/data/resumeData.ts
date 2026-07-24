@@ -7,7 +7,7 @@ import type { ResumeData } from "@/types/resume";
 export const resumeData: ResumeData = {
   name: "Nicholas Kyte",
   title: "Senior Network Engineer",
-  greeting: "Hi, I'm",
+  greeting: "Hello, I'm",
   summary:
     '"Bias for Action" Network Engineer with nearly two decades of infrastructure experience, specializing in automating and scaling large-scale IP networks and AI superclusters within hyper-scale data centers. Proven track record of implementing CI/CD and DevOps automations that eliminate hundreds of manual engineering hours. Automation is how we accelerate, but productive XFN team meetings are how we maintain velocity.',
   cvFilename: "nicholas-kyte-network-engineer.pdf",
